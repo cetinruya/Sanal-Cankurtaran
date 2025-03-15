@@ -6,8 +6,8 @@ import cv2
 import os
 
 #Dataset
-trainMyImagesFolder = "path/to/dataset/train"  #train dataset
-testMyImagesFolder = "path/to/dataset/val"    #test dataset
+trainingFolder = "C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\train"  #train dataset
+testFolder = "C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\test"    #test dataset
 
 #Define the SqueezeNet architecture
 def SqueezeNet(input_shape=(224, 224, 3), num_classes=3):
@@ -44,7 +44,7 @@ def SqueezeNet(input_shape=(224, 224, 3), num_classes=3):
 
 #Building the model 
 IMAGE_SIZE = [224, 224]
-NUM_CLASSES = len(os.listdir(trainMyImagesFolder))  # Sınıf sayısını klasörlerden alır
+NUM_CLASSES = len(os.listdir(trainingFolder))  # Sınıf sayısını klasörlerden alır
 model = SqueezeNet(input_shape=IMAGE_SIZE + [3], num_classes=NUM_CLASSES)
 
 #Compile the model 
@@ -67,14 +67,14 @@ train_datagen = ImageDataGenerator(
 test_datagen = ImageDataGenerator(rescale=1./255)
 
 training_set = train_datagen.flow_from_directory(
-    trainMyImagesFolder,
+    trainingFolder,
     target_size=(224, 224),
     batch_size=32,
     class_mode='categorical'
 )
 
 test_set = test_datagen.flow_from_directory(
-    testMyImagesFolder,
+    testFolder,
     target_size=(224, 224),
     batch_size=32,
     class_mode='categorical'

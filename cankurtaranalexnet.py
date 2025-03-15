@@ -6,8 +6,8 @@ import cv2
 import os
 
 # Dataset
-train_dir = "path/to/dataset/train"  # Train dataset
-val_dir = "path/to/dataset/val"      # Test dataset
+train_dir = "C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\train"  # Train dataset
+val_dir = "C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\test"      # Test dataset
 
 # Alexnet architecture
 def AlexNet(input_shape=(224, 224, 3), num_classes=3):

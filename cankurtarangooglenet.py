@@ -35,14 +35,14 @@ val_datagen = ImageDataGenerator(rescale=1.0 / 255)
 
 # Datasets
 train_generator = train_datagen.flow_from_directory(
-    'data/train',
+    'C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\train',
     target_size=(224, 224),
     batch_size=32,
     class_mode='categorical'
 )
 
 val_generator = val_datagen.flow_from_directory(
-    'data/val',
+    'C:\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\test',
     target_size=(224, 224),
     batch_size=32,
     class_mode='categorical'

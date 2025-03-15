@@ -12,8 +12,8 @@ from ultralytics import YOLO
 yolo_model = YOLO("yolov8n.pt")  # YOLOv8 Nano 
 
 IMAGE_SIZE = [224, 224]
-trainMyImagesFolder = "path\to\local\train"  #Training dataset
-testMyImagesFolder = "path\to\local\val"    #Test dataset
+trainingFolder = "C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\train"  #Training dataset
+testFolder = "C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\test"    #Test dataset
 
 # Pretrained ResNet50 model
 myResnet = ResNet50(input_shape=IMAGE_SIZE + [3], weights="imagenet", include_top=False)
@@ -22,7 +22,7 @@ myResnet = ResNet50(input_shape=IMAGE_SIZE + [3], weights="imagenet", include_to
 for layer in myResnet.layers:
     layer.trainable = False
 
-Classes = os.listdir(trainMyImagesFolder) 
+Classes = os.listdir(trainingFolder) 
 numOfClasses = len(Classes)  
 
 # Add layers to the model
@@ -50,14 +50,14 @@ test_datagen = ImageDataGenerator(rescale=1./255)
 
 #Load the datasets
 training_set = train_datagen.flow_from_directory(
-    trainMyImagesFolder,
+    trainingFolder,
     target_size=IMAGE_SIZE,
     batch_size=32,
     class_mode='categorical'
 )
 
 test_set = test_datagen.flow_from_directory(
-    testMyImagesFolder,
+    testFolder,
     target_size=IMAGE_SIZE,
     batch_size=32,
     class_mode='categorical'
@@ -88,7 +88,7 @@ tflite_model = converter.convert()
 with open("model.tflite", "wb") as f:
     f.write(tflite_model)
 
-print("Model başarıyla TFLite formatına dönüştürüldü!")
+print("Model başarıyla TFLite formatına dönüştürüldü")
 
 #Start the webcam
 cap = cv2.VideoCapture(1)  # 0, bilgisayarın varsayılan kamerasını temsil eder; 1 dahili kamera olmadığı için kullanılır

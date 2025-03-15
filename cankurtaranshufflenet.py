@@ -19,8 +19,8 @@ train_datagen = ImageDataGenerator(
 # Normalization for the validation set
 test_datagen = ImageDataGenerator(rescale=1.0 / 255)
 
-train_dir = "data/train"  
-val_dir = "data/val"  
+train_dir = "C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\train"  
+val_dir = "C:\\Users\\ruyaa\\OneDrive\\Desktop\\DATASET\\test"  
 
 # Load training dataset
 train_generator = train_datagen.flow_from_directory(
